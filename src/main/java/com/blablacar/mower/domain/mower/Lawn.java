@@ -1,4 +1,4 @@
-package com.blablacar.automower.domain.mower;
+package com.blablacar.mower.domain.mower;
 
 /**
  * Created by wassim on 01/12/2019.
@@ -22,4 +22,6 @@ public class Lawn {
             || position.getY() <0
             ;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.blablacar.automower.domain.mower;
+package com.blablacar.mower.domain.mower;
 
 import java.util.Objects;
 
@@ -14,24 +14,27 @@ public class Position {
         this.y = y;
     }
 
-
     public Position goForward(Orientation orientation, Lawn lawn) {
         final Position newPosition;
         switch (orientation) {
             case N:
-                newPosition = this.goNorth(); break;
+                newPosition = this.goNorth();
+                break;
             case E:
-                newPosition = this.goEast(); break;
+                newPosition = this.goEast();
+                break;
             case S:
-                newPosition = this.goSouth(); break;
+                newPosition = this.goSouth();
+                break;
             case W:
-                newPosition = this.goWest(); break;
+                newPosition = this.goWest();
+                break;
             default:
                 throw new RuntimeException(format("No operation found matching orientation : %s", orientation));
         }
-        if(lawn.isOutside(newPosition)){
+        if (lawn.isOutside(newPosition)) {
             return this;
-        }else {
+        } else {
             return newPosition;
         }
     }
@@ -80,10 +83,7 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
-            "x=" + x +
-            ", y=" + y +
-            '}';
+        return x + " " + y;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.blablacar.automower.domain.mower;
+package com.blablacar.mower.domain.mower;
 
 /**
  * Created by wassim on 02/12/2019.

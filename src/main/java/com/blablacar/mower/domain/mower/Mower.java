@@ -1,4 +1,4 @@
-package com.blablacar.automower.domain.mower;
+package com.blablacar.mower.domain.mower;
 
 
 import org.slf4j.Logger;
@@ -7,15 +7,15 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by wassim on 01/12/2019.
  */
-public class Automower {
+public class Mower {
 
-    private static Logger logger = LoggerFactory.getLogger(Automower.class);
+    private static Logger logger = LoggerFactory.getLogger(Mower.class);
 
     private Position position;
     private Orientation orientation;
     private Lawn lawn;
 
-    public Automower(Position position, Orientation orientation, Lawn lawn) {
+    public Mower(Position position, Orientation orientation, Lawn lawn) {
         this.position = position;
         this.orientation = orientation;
         this.lawn = lawn;
@@ -42,7 +42,7 @@ public class Automower {
                 turnOnRight();
                 break;
         }
-        logger.info("instruction : {}, automower : {}", instruction, this);
+        logger.trace("instruction : {}, mower : {}", instruction, this);
     }
 
     private void turnOnRight() {
@@ -67,9 +67,6 @@ public class Automower {
 
     @Override
     public String toString() {
-        return "Automower{" +
-            "position=" + position +
-            ", orientation=" + orientation +
-            '}';
+        return position + " " + orientation;
     }
 }
