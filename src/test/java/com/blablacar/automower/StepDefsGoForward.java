@@ -1,7 +1,9 @@
 package com.blablacar.automower;
 
-import com.blablacar.automower.domain.Automower;
-import com.blablacar.automower.domain.Lawn;
+import com.blablacar.automower.domain.mower.Automower;
+import com.blablacar.automower.domain.mower.Lawn;
+import com.blablacar.automower.domain.mower.Orientation;
+import com.blablacar.automower.domain.mower.Position;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,7 +22,10 @@ public class StepDefsGoForward {
 
     @Given("^the automower has position \\((\\d+),(\\d+)\\) and orientation \"([^\"]*)\"$")
     public void the_automower_has_position_and_orientation(int x, int y, String orientation) throws Throwable {
-        automower = new Automower(x, y, orientation);
+        automower = new Automower(
+            new Position(x, y),
+            Orientation.valueOf(orientation),
+            this.lawn);
     }
 
     @When("^the Automower receives instructions \"([^\"]*)\"$")
@@ -31,9 +36,9 @@ public class StepDefsGoForward {
     @Then("^the client Automower has new position \\((\\d+),(\\d+)\\) and orientation \"([^\"]*)\"$")
     public void the_client_Automower_has_new_position_and_orientation(int newX, int newY, String newOrientation) throws Throwable {
         assertThat(this.automower.getPosition())
-            .isEqualTo(new Automower.Position(newX, newY));
+            .isEqualTo(new Position(newX, newY));
         assertThat(this.automower.getOrientation())
-            .isEqualTo(Automower.Orientation.valueOf(newOrientation));
+            .isEqualTo(Orientation.valueOf(newOrientation));
     }
 
 }
